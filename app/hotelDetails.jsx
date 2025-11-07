@@ -11,7 +11,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter, useLocalSearchParams } from 'expo-router';
-import COLORS from '../../constants/colors';
+import COLORS from '../constants/colors';
 
 const { width } = Dimensions.get('window');
 
@@ -25,25 +25,25 @@ const HotelDetails = () => {
   // Get hotel images based on hotel ID
   const getHotelImages = () => {
     const imageMap = {
-      '1': require('../../assets/images/hotel1.jpg'),
-      '2': require('../../assets/images/hotel2.jpg'),
-      '3': require('../../assets/images/hotel3.jpg'),
-      '4': require('../../assets/images/hotel4.jpg'),
+      '1': require('../assets/images/hotel1.jpg'),
+      '2': require('../assets/images/hotel2.jpg'),
+      '3': require('../assets/images/hotel3.jpg'),
+      '4': require('../assets/images/hotel4.jpg'),
     };
 
-    const mainImage = imageMap[params.hotelId] || require('../../assets/images/hotel1.jpg');
+    const mainImage = imageMap[params.hotelId] || require('../assets/images/hotel1.jpg');
 
     return {
       mainImages: [
         mainImage,
-        require('../../assets/images/hotel2.jpg'),
-        require('../../assets/images/hotel3.jpg'),
-        require('../../assets/images/hotel4.jpg'),
+        require('../assets/images/hotel2.jpg'),
+        require('../assets/images/hotel3.jpg'),
+        require('../assets/images/hotel4.jpg'),
       ],
       thumbnails: [
         mainImage,
-        require('../../assets/images/hotel2.jpg'),
-        require('../../assets/images/hotel4.jpg'),
+        require('../assets/images/hotel2.jpg'),
+        require('../assets/images/hotel3.jpg'),
       ],
     };
   };
@@ -217,6 +217,7 @@ const HotelDetails = () => {
       {/* Fixed Bottom Bar */}
       <View style={styles.bottomBar}>
         <View style={styles.bottomActions}>
+          <View style={styles.iconview}>
           <TouchableOpacity
             style={styles.actionButton}
             onPress={handleWishlist}
@@ -238,6 +239,7 @@ const HotelDetails = () => {
             <Ionicons name="share-social-outline" size={24} color="#333" />
             <Text style={styles.actionText}>Share</Text>
           </TouchableOpacity>
+          </View>
 
           <View style={styles.discountContainer}>
             <Text style={styles.discountText}>{hotelData.discount}</Text>
@@ -432,6 +434,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 12,
   },
+  iconview:{
+    flexDirection:"row",
+    gap:20,
+  },
   actionButton: {
     alignItems: 'center',
     gap: 4,
@@ -499,9 +505,10 @@ const styles = StyleSheet.create({
   },
   chatButton: {
     backgroundColor: '#8b5cf6',
-    paddingHorizontal: 32,
+    paddingHorizontal: 20,
     paddingVertical: 14,
     borderRadius: 25,
+    marginLeft:15
   },
   chatButtonText: {
     color: '#fff',

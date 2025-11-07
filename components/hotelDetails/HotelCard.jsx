@@ -20,7 +20,7 @@ export default function HotelCard({
 
   const handleCardPress = () => {
     router.push({
-      pathname: '/(drawers)/hotelDetails',
+      pathname: '/hotelDetails',
       params: {
         hotelId: hotel.id,
         hotelName: hotel.name,

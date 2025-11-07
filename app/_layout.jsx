@@ -8,6 +8,8 @@ export default function RootLayout() {
     <Stack screenOptions={{headerShown:false}}>
       <Stack.Screen name="(auth)"/>
       <Stack.Screen name="(drawers)" />
+      <Stack.Screen name="hotelDetails"/>
+      
     </Stack>
     </>
   )
