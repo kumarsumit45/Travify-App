@@ -49,8 +49,6 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   logoContainer: {
-    // width: 40,
-    // height: 40,
     borderRadius: 8,
     backgroundColor: 'white',
     borderWidth: 1.2,
