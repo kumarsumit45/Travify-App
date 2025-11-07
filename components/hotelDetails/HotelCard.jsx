@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import { useRouter } from 'expo-router';
 import useWishlistStore from '../../store/useWishlistStore';
 
 
@@ -13,10 +14,28 @@ export default function HotelCard({
   hotel,
   onChat,
 }) {
+  const router = useRouter();
   const { toggleWishlist, wishlist } = useWishlistStore();
   const isWishlisted = wishlist.some((item) => item.id === hotel.id);
+
+  const handleCardPress = () => {
+    router.push({
+      pathname: '/(drawers)/hotelDetails',
+      params: {
+        hotelId: hotel.id,
+        hotelName: hotel.name,
+        hotelLocation: hotel.location,
+        hotelImage: JSON.stringify(hotel.image),
+        discountPercent: hotel.discountPercent,
+        commissioningPrice: hotel.commissioning_price,
+        commissionFreePrice: hotel.commissionFreePrice,
+        reviews: hotel.reviews,
+      },
+    });
+  };
+
   return (
-    <TouchableOpacity style={styles.card} activeOpacity={0.8}>
+    <TouchableOpacity style={styles.card} activeOpacity={0.8} onPress={handleCardPress}>
       <View style={styles.header}>
         <View style={styles.hotelInfo}>
           <View style={styles.iconNameContainer}>
@@ -39,7 +58,10 @@ export default function HotelCard({
           <View style={styles.overlayButtons}>
             <TouchableOpacity
               style={styles.iconButton}
-              onPress={() => toggleWishlist(hotel)}
+              onPress={(e) => {
+                e.stopPropagation();
+                toggleWishlist(hotel);
+              }}
               activeOpacity={0.7}
             >
               <Ionicons
@@ -48,7 +70,11 @@ export default function HotelCard({
                 color={isWishlisted ? '#FF6B6B' : '#fff'}
               />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
+            <TouchableOpacity
+              style={styles.iconButton}
+              activeOpacity={0.7}
+              onPress={(e) => e.stopPropagation()}
+            >
               <Ionicons name="share-social" size={24} color="#fff" />
             </TouchableOpacity>
           </View>
@@ -78,7 +104,10 @@ export default function HotelCard({
 
         <TouchableOpacity
           style={styles.chatButton}
-          onPress={onChat}
+          onPress={(e) => {
+            e.stopPropagation();
+            onChat();
+          }}
           activeOpacity={0.8}
         >
           <Text style={styles.chatButtonText}>Chat Now</Text>
