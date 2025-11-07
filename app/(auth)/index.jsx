@@ -25,24 +25,24 @@ export default function SignInScreen({ navigation }) {
   const handleSignIn = async () => {
     setLoading(true);
     try {
-      // if(!email || !password){
-      //   return(
-      //     Alert.alert("Error","Please enter all the fields.")
-      //   )
-      // }
-      // // Dummy credentials
-      // const DUMMY_EMAIL = 'sumit@gmail.com';
-      // const DUMMY_PASSWORD = '123456';
+      if(!email || !password){
+        return(
+          Alert.alert("Error","Please enter all the fields.")
+        )
+      }
+      // Dummy credentials
+      const DUMMY_EMAIL = 'sumit@gmail.com';
+      const DUMMY_PASSWORD = '123456';
 
-      // // Check if credentials match
-      // if (email === DUMMY_EMAIL && password === DUMMY_PASSWORD) {
-      //   // Navigate to drawer/index on successful login
-      //   router.replace('/(drawers)');
-      // } else {
-      //   // Show error alert for invalid credentials
-      //   Alert.alert('Error', 'Invalid credentials');
-      // }
-      router.replace('/(drawers)');
+      // Check if credentials match
+      if (email === DUMMY_EMAIL && password === DUMMY_PASSWORD) {
+        // Navigate to drawer/index on successful login
+        router.replace('/(drawers)');
+      } else {
+        // Show error alert for invalid credentials
+        Alert.alert('Error', 'Invalid credentials');
+      }
+      
     } catch (error) {
       console.error('Sign in error:', error);
       Alert.alert('Error', 'Something went wrong');
