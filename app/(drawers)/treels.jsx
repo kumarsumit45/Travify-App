@@ -1,14 +1,13 @@
-import React from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import {
-  View,
+  Dimensions,
+  StyleSheet,
   Text,
   TouchableOpacity,
-  StyleSheet,
-  Dimensions,
+  View,
 } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import {SafeAreaView} from "react-native-safe-area-context"
-import { useRouter } from 'expo-router';
+import { SafeAreaView } from "react-native-safe-area-context";
 const { width, height } = Dimensions.get('window');
 
 
@@ -30,10 +29,10 @@ const TreelsScreen = () => {
         {/* Coming Soon Section */}
         <View style={styles.comingSoonContainer}>
           {/* Megaphone Icon */}
-          <MaterialCommunityIcons
-            name="megaphone"
+          <Ionicons
+            name="megaphone-outline"
             size={80}
-            color="#2563EB"
+            color="black" //#972eff
             style={styles.megaphone}
           />
 
