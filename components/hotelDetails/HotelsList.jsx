@@ -7,6 +7,7 @@ import {
 import { useRouter } from 'expo-router';
 
 import HotelCard from './HotelCard';
+import COLORS from '../../constants/colors';
 
 const HOTELS_DATA = [
   {
@@ -174,7 +175,8 @@ export default function HotelsList() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor:COLORS.tabBackground,
+    marginTop:12,
   },
   listContent: {
     paddingHorizontal: 16,

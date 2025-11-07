@@ -123,6 +123,7 @@ export default function SignInScreen({ navigation }) {
                   loading && styles.signInButtonDisabled,
                 ]}
                 onPress={handleSignIn}
+                activeOpacity={0.8}
                 disabled={loading}
               >
                 <Text style={styles.signInButtonText}>
