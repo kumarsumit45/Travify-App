@@ -31,15 +31,17 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Drawer } from "expo-router/drawer";
-import { DrawerItemList } from "@react-navigation/drawer";
+import { DrawerItemList, DrawerItem } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import COLORS from "../../constants/colors";
 
 // replace with your local logo path
 const LOGO = require("../../assets/images/Tlogo.jpg");
 
 function CustomDrawerContent(props) {
-  const { navigation } = props;
+  const { navigation, descriptors, state } = props;
+  const router = useRouter();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -66,7 +68,40 @@ function CustomDrawerContent(props) {
 
       {/* keep the default drawer items below the header */}
       <View style={styles.items}>
-        <DrawerItemList {...props} />
+        {/* Render all drawer items */}
+        {state.routes.map((route, index) => {
+          const { drawerLabel, drawerIcon, title } = descriptors[route.key].options;
+
+          // Skip the wishlist route - we'll add a custom one
+          if (route.name === 'wishlist') {
+            return null;
+          }
+
+          return (
+            <DrawerItem
+              key={route.key}
+              label={drawerLabel !== undefined ? drawerLabel : title !== undefined ? title : route.name}
+              icon={drawerIcon}
+              focused={state.index === index}
+              onPress={() => {
+                navigation.navigate(route.name);
+                navigation.closeDrawer();
+              }}
+            />
+          );
+        })}
+
+        {/* Custom wishlist item that navigates directly to tabs wishlist */}
+        <DrawerItem
+          label="Wishlist"
+          icon={({ size, color }) => (
+            <Ionicons name="heart-outline" size={size} color={color} />
+          )}
+          onPress={() => {
+            navigation.closeDrawer();
+            router.push("/(drawers)/(tabs)/wishlist");
+          }}
+        />
       </View>
     </SafeAreaView>
   );
