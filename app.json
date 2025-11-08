@@ -9,7 +9,11 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kumarsumit45.Travifai",
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -60,6 +64,12 @@
       "eas": {
         "projectId": "e96676c4-e020-4064-a08e-9920a5ffd77a"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/e96676c4-e020-4064-a08e-9920a5ffd77a"
     }
   }
 }

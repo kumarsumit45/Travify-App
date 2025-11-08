@@ -22,6 +22,11 @@
       "android": {
         "buildType": "apk"
       }
+    },
+    "simulator": {
+      "ios": {
+        "simulator": true
+      }
     }
   },
   "submit": {
