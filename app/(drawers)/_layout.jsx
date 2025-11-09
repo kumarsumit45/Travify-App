@@ -1,31 +1,3 @@
-/*import { View, Text } from 'react-native'
-import React from 'react'
-import { Drawer } from "expo-router/drawer"
-import { Ionicons } from '@expo/vector-icons'
-import COLORS from "../../constants/colors"
-
-const DrawerLayout = () => {
-  return (
-    <Drawer screenOptions={{
-      headerShown:false,
-      drawerContentStyle:{
-        backgroundColor:COLORS.tabBackground
-      },
-      }}>
-      <Drawer.Screen name="(tabs)" options={{
-        title:"Home",
-        drawerIcon:({size,color})=>(
-          <Ionicons name="home-outline" size={size} color={color} />
-        )
-      }}/>
-      <Drawer.Screen name="Treels"/>
-      <Drawer.Screen name="contact"/>
-    </Drawer>
-  )
-}
-
-export default DrawerLayout
-*/
 import React from "react";
 
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
@@ -72,7 +44,6 @@ function CustomDrawerContent(props) {
         {state.routes.map((route, index) => {
           const { drawerLabel, drawerIcon, title } = descriptors[route.key].options;
 
-          // Skip the wishlist route - we'll add a custom one
           if (route.name === 'wishlist') {
             return null;
           }
